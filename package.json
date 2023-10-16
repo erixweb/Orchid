@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "node index.js"
+    "compile": "node index.js",
+    "run": "node index.js && node main.js"
   },
   "dependencies": {
     "terser": "5.22.0"
