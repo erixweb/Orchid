@@ -5,7 +5,7 @@ JavaScript, but with extra features
 ## Features
 
 * Enums
-* Compile code optimization
+* Compile-time code optimization
 
 ## Examples
 
