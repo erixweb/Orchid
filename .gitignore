@@ -1,0 +1,4 @@
+# Files and directories produced by the `npm install` command
+
+node_modules/
+package-lock.json

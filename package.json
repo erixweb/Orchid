@@ -1,0 +1,12 @@
+{
+  "name": "orchid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "node index.js"
+  },
+  "dependencies": {
+    "terser": "5.22.0"
+  }
+}
