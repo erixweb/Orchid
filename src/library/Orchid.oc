@@ -1,0 +1,113 @@
+/**
+ * The data types enum. Useful for the `enforceType()` function
+ * 
+ * @enum
+ */
+enum DataTypes {
+    Number = "number",
+    String = "string",
+    Object = "object",
+    BigInt = "bigint",
+    Boolean = "boolean",
+    Function = "function",
+    Undefined = "undefined",
+    Symbol = "symbol",
+    Null = "null"
+};
+
+/**
+ * Function to enforce a specific data type on a value.
+ * Throws an error if the value's type does not match the specified type.
+ * 
+ * @param {*} value - The value to be checked.
+ * @param {DataTypes} type - The data type to enforce (e.g., "number", "string", "object").
+ * @throws {Error} Throws an error if the type check fails.
+ */
+function enforceType(value, type) {
+    if (typeof value !== type) {
+        throw new Error(`Type of "${value}" is "${typeof value}", when it should be "${type}".`);
+    }
+};
+
+/**
+ * Sleeps for the specified time in milliseconds.
+ * 
+ * @param {number} milliseconds 
+ * @returns {Promise<void>}
+ */
+function sleep(milliseconds) {
+    enforceType(milliseconds, DataTypes.Number);
+
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
+};
+
+/**
+ * Returns true if the value is in the array, false otherwise.
+ * 
+ * @param {any} value 
+ */
+Array.prototype.isInArray = function (value) {
+    const array = this;
+
+    for (const element of array) {
+        if (element == value) {
+            return true;
+        }
+    }
+
+    return false;
+};
+
+/**
+ * Returns true if the specified object is defined, false otherwise.
+ * This is an alias to `typeof object == ! "undefined"`
+ * 
+ * @param {any} object 
+ * @returns {boolean}
+ */
+function isDefined(object) {
+    return !(typeof object == DataTypes.Undefined);
+}
+
+/**
+ * An enum of all possible environments that your app can run in.
+ * 
+ * @enum
+ */
+enum RunningEnvironments {
+    Node,
+    Bun,
+    Browser,
+    Unknown
+};
+
+/**
+ * Returns the environment that your app is running in.
+ * 
+ * @returns {RunningEnvironments}
+ */
+function getRunningEnvironment() {
+    if (!isDefined(process) && process.release?.name === 'node') {
+        return RunningEnvironments.Node;
+    }
+
+    if (!isDefined(process) && process.versions.bun) {
+        return RunningEnvironments.Bun;
+    }
+
+    if (isDefined(this.window)) {
+        return RunningEnvironments.Browser;
+    }
+
+    return RunningEnvironments.Unknown;
+}
+
+/**
+ * Returns the environment that your app is running in.
+ * This is an alias to `getRunningEnvironment()`
+ * 
+ * @returns {RunningEnvironments}
+ */
+function getRunningEnv() {
+    return getRunningEnvironment();
+}

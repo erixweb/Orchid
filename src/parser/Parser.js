@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 module.exports = {
     /**
      * Parses the code
@@ -6,8 +8,8 @@ module.exports = {
      * @returns {string}
      */
     parse(code) {
-        let lines = code.split("\n");
-
+        let lines = (fs.readFileSync("./src/library/Orchid.oc").toString() + "\n" + code)
+            .split("\n");
         let inEnumBlock = false;
         let enumName;
 
