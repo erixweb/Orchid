@@ -62,18 +62,22 @@ class User {
     }
 }
 
-if (getRunningEnv() == RunningEnvironments.Browser) {
-    throw new Error("Oops! You can't run this in a browser!");
+async function main() {
+    if (getRunningEnv() == RunningEnvironments.Browser) {
+        throw new Error("Oops! You can't run this in a browser!");
+    }
+
+    const user1 = new User("user1", DataTypes.String);
+    const user2 = new User("user2", DataTypes.String);
+
+    user1.say("Hello!");
+
+    await sleep(1000)
+
+    user2.say("Hello!")
 }
 
-const user1 = new User("user1", DataTypes.String);
-const user2 = new User("user2", DataTypes.String);
-
-user1.say("Hello!");
-
-sleep(1000)
-
-user2.say("Hello!")
+main();
 ```
 
 ## Usage
