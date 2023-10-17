@@ -8,30 +8,35 @@ module.exports = {
      * @returns {string}
      */
     parse(code) {
-        let lines = (fs.readFileSync("./src/library/Orchid.oc").toString() + "\n" + code)
-            .split("\n");
+        const lines = (
+            fs.readFileSync("./src/library/Orchid.oc").toString() +
+            "\n" +
+            "(async () => {" + code + "})();"
+        );
+
+        let linesArray = lines.split("\n");
         let inEnumBlock = false;
         let enumName;
 
-        for (let i = 0; i < lines.length; i++) {
-            let line = lines[i].trim();
+        for (let i = 0; i < linesArray.length; i++) {
+            let line = linesArray[i].trim();
 
             if (inEnumBlock) {
                 if (line.includes("=")) {
-                    lines[i] = `${line.replace("=", ":")}`
-                } else if (lines[i].includes("}")) {
+                    linesArray[i] = `${line.replace("=", ":")}`
+                } else if (linesArray[i].includes("}")) {
                     inEnumBlock = false;
                 } else {
-                    lines[i] = `${line.replace(",", "")}: ${i - 1},`
+                    linesArray[i] = `${line.replace(",", "")}: ${i - 1},`
                 }
             } else if (line.startsWith('enum')) {
                 inEnumBlock = true;
 
                 enumName = line.replace("enum ", "").replace("{", "").trim();
-                lines[i] = `const ${enumName} = {`;
+                linesArray[i] = `const ${enumName} = {`;
             }
         }
 
-        return lines.join("\n");
+        return linesArray.join("\n");
     }
 };

@@ -1,7 +1,14 @@
 /**
+ * The maximum int32 value.
+ *
+ * @type {number}
+ */
+const MAX_INT32_VALUE = 2147483647;
+
+/**
  * The data types enum. Useful for the `enforceType()` function
  * 
- * @enum
+ * @enum {string}
  */
 enum DataTypes {
     Number = "number",
@@ -9,6 +16,7 @@ enum DataTypes {
     Object = "object",
     BigInt = "bigint",
     Boolean = "boolean",
+    Array = "array",
     Function = "function",
     Undefined = "undefined",
     Symbol = "symbol",
@@ -32,12 +40,10 @@ function enforceType(value, type) {
 /**
  * Sleeps for the specified time in milliseconds.
  * 
- * @param {number} milliseconds 
+ * @param {number} [milliseconds] 
  * @returns {Promise<void>}
  */
-function sleep(milliseconds) {
-    enforceType(milliseconds, DataTypes.Number);
-
+function sleep(milliseconds = MAX_INT32_VALUE) {
     return new Promise(resolve => setTimeout(resolve, milliseconds));
 };
 
@@ -72,7 +78,7 @@ function isDefined(object) {
 /**
  * An enum of all possible environments that your app can run in.
  * 
- * @enum
+ * @enum {string}
  */
 enum RunningEnvironments {
     Node,
