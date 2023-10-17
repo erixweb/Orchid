@@ -18,7 +18,7 @@ module.exports = {
 
             if (inEnumBlock) {
                 if (line.includes("=")) {
-                    lines[i] = `${line}`
+                    lines[i] = `${line.replace("=", ":")}`
                 } else if (lines[i].includes("}")) {
                     inEnumBlock = false;
                 } else {
