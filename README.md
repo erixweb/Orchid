@@ -12,7 +12,7 @@ JavaScript, but with extra features
 * Built-in `Array.prototype.isInArray(value)` function
 * Built-in `enforceType(value, type)` function
 * Built-in `getRunningEnvironment()` & `getRunningEnv()` functions
-* Built-in `isDefined(object)` alias
+* Built-in `isDefined(object)` function
 
 ## Examples
 
