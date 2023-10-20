@@ -9,9 +9,15 @@ module.exports = {
      */
     parse(code) {
         const lines = (
-            fs.readFileSync("./src/library/Orchid.oc").toString() +
-            "\n" +
-            "(async () => {" + code + "})();"
+            `"use strict";` +
+
+            // Compiler-inserted values
+            `const __COMPILER__OPTIMIZATION_ENABLED = ${!process.argv.includes("--noOptimization")}`,
+
+            "(async () => {" + 
+                fs.readFileSync("./src/library/Orchid.oc").toString() +
+                code + 
+            "})();"
         );
 
         let linesArray = lines.split("\n");
@@ -21,10 +27,11 @@ module.exports = {
         for (let i = 0; i < linesArray.length; i++) {
             let line = linesArray[i].trim();
 
+            // Parsing enumns
             if (inEnumBlock) {
                 if (line.includes("=")) {
                     linesArray[i] = `${line.replace("=", ":")}`
-                } else if (linesArray[i].includes("}")) {
+                } else if (line.includes("}")) {
                     inEnumBlock = false;
                 } else {
                     linesArray[i] = `${line.replace(",", "")}: ${i - 1},`

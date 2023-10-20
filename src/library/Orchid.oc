@@ -6,6 +6,16 @@
 const MAX_INT32_VALUE = 2147483647;
 
 /**
+ * An enum that has common time intervals in milliseconds
+ *
+ * @enum {number}
+ */
+enum Time {
+    Minute = 60000,
+    Second = 1000
+}
+
+/**
  * The data types enum. Useful for the `enforceType()` function
  * 
  * @enum {string}
@@ -52,7 +62,7 @@ function sleep(milliseconds = MAX_INT32_VALUE) {
  * 
  * @param {any} value 
  */
-Array.prototype.isInArray = function (value) {
+Array.prototype.includes = function (value) {
     const array = this;
 
     for (const element of array) {
@@ -63,6 +73,44 @@ Array.prototype.isInArray = function (value) {
 
     return false;
 };
+
+/**
+ * Returns a number (not a float like Math.random()) within the specified range
+ *
+ * @param {number} [min]
+ * @param {number} [max]
+ * 
+ * @returns {number}
+ */
+Math.nRandom = function (min = 0, max = 100) {
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
+/**
+ * Returns the square of the specified number
+ * 
+ * @param {number} [number]
+ * @returns {number}
+ */
+Math.square = function (number) {
+    enforceType(number, DataTypes.Number);
+
+    return number * 2;
+}
+
+/**
+ * Returns a random element that is in the array
+ *
+ * @returns {any}
+ */
+Array.prototype.random = function () {
+    const array = this;
+
+    return this[Math.nRandom(0, array.length)];
+}
+
+Array.prototype.contains = Array.prototype.includes;
+String.prototype.contains = String.prototype.includes;
 
 /**
  * Returns true if the specified object is defined, false otherwise.
