@@ -1,9 +1,280 @@
 /**
- * The maximum int32 value.
+ * The minimum value for an 8-bit signed integer.
+ *
+ * @type {number}
+ */
+const MIN_INT8_VALUE = -128;
+
+/**
+ * The maximum value for an 8-bit signed integer.
+ *
+ * @type {number}
+ */
+const MAX_INT8_VALUE = 127;
+
+/**
+ * The minimum value for a 16-bit signed integer.
+ *
+ * @type {number}
+ */
+const MIN_INT16_VALUE = -32768;
+
+/**
+ * The maximum value for a 16-bit signed integer.
+ *
+ * @type {number}
+ */
+const MAX_INT16_VALUE = 32767;
+
+/**
+ * The minimum value for a 24-bit signed integer.
+ *
+ * @type {number}
+ */
+const MIN_INT24_VALUE = -8388608;
+
+/**
+ * The maximum value for a 24-bit signed integer.
+ *
+ * @type {number}
+ */
+const MAX_INT24_VALUE = 8388607;
+
+/**
+ * The minimum value for a 32-bit signed integer.
+ *
+ * @type {number}
+ */
+const MIN_INT32_VALUE = -2147483648;
+
+/**
+ * The maximum value for a 32-bit signed integer.
  *
  * @type {number}
  */
 const MAX_INT32_VALUE = 2147483647;
+
+/**
+ * The minimum value for an 8-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MIN_UINT8_VALUE = 0;
+
+/**
+ * The maximum value for an 8-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MAX_UINT8_VALUE = 255;
+
+/**
+ * The minimum value for a 16-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MIN_UINT16_VALUE = 0;
+
+/**
+ * The maximum value for a 16-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MAX_UINT16_VALUE = 65535;
+
+/**
+ * The minimum value for a 24-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MIN_UINT24_VALUE = 0;
+
+/**
+ * The maximum value for a 24-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MAX_UINT24_VALUE = 16777215;
+
+/**
+ * The minimum value for a 32-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MIN_UINT32_VALUE = 0;
+
+/**
+ * The maximum value for a 32-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MAX_UINT32_VALUE = 4294967295;
+
+/**
+ * The minimum value for a 32-bit floating-point number.
+ *
+ * @type {number}
+ */
+const MIN_FLOAT_VALUE = -3.4028234663852886e+38;
+
+/**
+ * The maximum value for a 32-bit floating-point number.
+ *
+ * @type {number}
+ */
+const MAX_FLOAT_VALUE = 3.4028234663852886e+38;
+
+/**
+ * The minimum value for a 64-bit floating-point number.
+ *
+ * @type {number}
+ */
+const MIN_DOUBLE_VALUE = -1.7976931348623157e+308;
+
+/**
+ * The maximum value for a 64-bit floating-point number.
+ *
+ * @type {number}
+ */
+const MAX_DOUBLE_VALUE = 1.7976931348623157e+308;/**
+ * The minimum value for an 8-bit signed integer.
+ *
+ * @type {number}
+ */
+const MIN_INT8_VALUE = -128;
+
+/**
+ * The maximum value for an 8-bit signed integer.
+ *
+ * @type {number}
+ */
+const MAX_INT8_VALUE = 127;
+
+/**
+ * The minimum value for a 16-bit signed integer.
+ *
+ * @type {number}
+ */
+const MIN_INT16_VALUE = -32768;
+
+/**
+ * The maximum value for a 16-bit signed integer.
+ *
+ * @type {number}
+ */
+const MAX_INT16_VALUE = 32767;
+
+/**
+ * The minimum value for a 24-bit signed integer.
+ *
+ * @type {number}
+ */
+const MIN_INT24_VALUE = -8388608;
+
+/**
+ * The maximum value for a 24-bit signed integer.
+ *
+ * @type {number}
+ */
+const MAX_INT24_VALUE = 8388607;
+
+/**
+ * The minimum value for a 32-bit signed integer.
+ *
+ * @type {number}
+ */
+const MIN_INT32_VALUE = -2147483648;
+
+/**
+ * The maximum value for a 32-bit signed integer.
+ *
+ * @type {number}
+ */
+const MAX_INT32_VALUE = 2147483647;
+
+/**
+ * The minimum value for an 8-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MIN_UINT8_VALUE = 0;
+
+/**
+ * The maximum value for an 8-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MAX_UINT8_VALUE = 255;
+
+/**
+ * The minimum value for a 16-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MIN_UINT16_VALUE = 0;
+
+/**
+ * The maximum value for a 16-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MAX_UINT16_VALUE = 65535;
+
+/**
+ * The minimum value for a 24-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MIN_UINT24_VALUE = 0;
+
+/**
+ * The maximum value for a 24-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MAX_UINT24_VALUE = 16777215;
+
+/**
+ * The minimum value for a 32-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MIN_UINT32_VALUE = 0;
+
+/**
+ * The maximum value for a 32-bit unsigned integer.
+ *
+ * @type {number}
+ */
+const MAX_UINT32_VALUE = 4294967295;
+
+/**
+ * The minimum value for a 32-bit floating-point number.
+ *
+ * @type {number}
+ */
+const MIN_FLOAT_VALUE = -3.4028234663852886e+38;
+
+/**
+ * The maximum value for a 32-bit floating-point number.
+ *
+ * @type {number}
+ */
+const MAX_FLOAT_VALUE = 3.4028234663852886e+38;
+
+/**
+ * The minimum value for a 64-bit floating-point number.
+ *
+ * @type {number}
+ */
+const MIN_DOUBLE_VALUE = -1.7976931348623157e+308;
+
+/**
+ * The maximum value for a 64-bit floating-point number.
+ *
+ * @type {number}
+ */
+const MAX_DOUBLE_VALUE = 1.7976931348623157e+308;
 
 /**
  * An enum that has common time intervals in milliseconds
@@ -11,8 +282,12 @@ const MAX_INT32_VALUE = 2147483647;
  * @enum {number}
  */
 enum Time {
+	Second = 1000,
     Minute = 60000,
-    Second = 1000
+	Hour = 3600000,
+	Day = 86400000,
+	Month = 2592000000,
+	Year = 31536000000
 }
 
 /**
@@ -96,6 +371,28 @@ Math.square = function (number) {
     enforceType(number, DataTypes.Number);
 
     return number * 2;
+}
+
+/**
+ * Calculates the floating-point remainder of dividing the dividend by the divisor.
+ * 
+ * @param {number} [dividend]
+ * @param {number} [divisor]
+ * @returns {number}
+ */
+Math.fmod = function (dividend, divisor) {
+    return ((dividend % divisor) + divisor) % divisor;
+}
+
+/**
+ * Rounds the float to the specified number of digits after the decimal point.
+ * 
+ * @param {number} [x]
+ * @param {number} [digits]
+ * @returns {number}
+ */
+Math.fround = function (x, digits = 1) {
+	return parseFloat(x.toFixed(digits));
 }
 
 /**
