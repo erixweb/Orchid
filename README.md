@@ -74,21 +74,24 @@ console.log("Random user: ", users.random());
 ```
 
 ```ts
-// export.oc
+// Bundling example
+
+// hello.oc
 module.exports = {
     main: () => {
-        console.log("Hello from export.oc!");
+        console.log("Hello!");
     }
 }
 
 // main.oc
-export.main();
+hello.main();
 ```
 
 ## Usage
 
-1. Create a file named "main.oc"
-2. `npm run dev` for a development version. `npm run release` for a release version
+* `npm run dev` for a development version. 
+* `npm run release` for a release version. 
+* `npm run bundle` for a bundled version.
 
 ## Planned features
 
