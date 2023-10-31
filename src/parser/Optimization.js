@@ -1,4 +1,4 @@
-const swc = require("@swc/core");
+const terser = require("terser");
 
 const Logger = require("../utils/Logger");
 
@@ -11,19 +11,40 @@ module.exports = {
      */
     async optimize(code) {
         try {
-            const result = await swc.minify(code, {
-                compress: true,
-                mangle: true
+            const result = await terser.minify(code, {
+                compress: {
+                    dead_code: true,
+                    drop_console: false,
+                    drop_debugger: false,
+                    keep_classnames: false,
+                    keep_fargs: false,
+                    keep_fnames: false,
+                    keep_infinity: false
+                },
+                mangle: {
+                    eval: true,
+                    keep_classnames: false,
+                    keep_fnames: false,
+                    toplevel: true,
+                    safari10: true
+                },
+                module: false,
+                sourceMap: process.argv.includes("--sourceMap"),
+                output: {
+                    comments: false
+                }
             });
 
             if (result.error) {
-                Logger.error("Terser error: " + result.error);
+                Logger.error("Optimization error: " + result.error);
+
                 return code;
             }
 
             return result.code;
         } catch (error) {
             Logger.error("Error while optimizing: " + error.stack);
+
             return code;
         }
     }

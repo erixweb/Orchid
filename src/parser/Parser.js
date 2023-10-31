@@ -8,17 +8,24 @@ module.exports = {
      * @returns {string}
      */
     parse(code) {
-        const lines = (
-            `"use strict";` +
-
-            // Compiler-inserted values
-            `const __COMPILER__OPTIMIZATION_ENABLED = ${!process.argv.includes("--noOptimization")}`,
-
-            "(async () => {" + 
-                fs.readFileSync("./src/library/Orchid.oc").toString() +
-                code + 
-            "})();"
+        let lines = (
+            `"use strict";`
         );
+
+        if (process.argv.includes("--bundle")) {
+            lines = lines + code;
+        } else {
+            lines = lines +
+                "(async () => {" +
+                    // Compiler-inserted values
+                    `const __COMPILER__OPTIMIZATION_ENABLED = ${!process.argv.includes("--noOptimization")};` +
+                    
+                    fs.readFileSync("./src/library/Orchid.oc").toString() +
+                    fs.readFileSync("./src/library/Math.oc").toString() +
+                    
+                    code +
+                "})();"
+        }
 
         let linesArray = lines.split("\n");
         let inEnumBlock = false;

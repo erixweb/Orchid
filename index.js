@@ -7,6 +7,15 @@ const Optimization = require("./src/parser/Optimization");
 const Parser = require("./src/parser/Parser");
 
 async function main() {
+    if (process.argv.includes("--bundle")) {
+        fs.writeFileSync("main.js",
+            Parser.parse(
+                fs.readFileSync("./src/library/Orchid.oc").toString() +
+                fs.readFileSync("./src/library/Math.oc").toString()
+            )
+        )
+    }
+
     try {
         const files = fs.readdirSync(".");
 
@@ -30,13 +39,28 @@ async function main() {
                 contents = await Optimization.optimize(contents);
             }
 
-            fs.writeFileSync(
-                directoryFile.replace(".oc", ".js"), 
-                contents
-            );
+            if (process.argv.includes("--bundle")) {
+                fs.appendFileSync(
+                    "main.js",
+                    await Parser.parse(
+                        contents.replaceAll("module.exports={", `const ${directoryFile.replace(".oc", "")} = {`)
+                    )
+                );
+            } else {
+                fs.writeFileSync(
+                    directoryFile.replace(".oc", ".js"),
+                    contents
+                );
+            }
         }
     } catch (error) {
         Logger.error(error.stack);
+    }
+
+    if (!process.argv.includes("--noOptimization")) {
+        const content = fs.readFileSync("main.js");
+
+        fs.writeFileSync("main.js", await Optimization.optimize(content.toString()));
     }
 }
 

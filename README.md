@@ -7,10 +7,10 @@ JavaScript, but with extra features
 * Enums
 * Compile-time code optimization
 * Now you can use `await` without defining a function
+* Support for bundling multiple files into one
 * Built-in `Time` enum
 * Built-in `DataTypes` enum
 * Built-in `sleep(milliseconds)` function
-* Built-in `Array.prototype.includes(value)` function
 * Built-in `Array.prototype.random()` function
 * Built-in `Math.nRandom(min, max)` function
 * Built-in `Math.square()` function
@@ -73,10 +73,22 @@ user2.say("Square of my age is " + Math.square(user2.age));
 console.log("Random user: ", users.random());
 ```
 
+```ts
+// export.oc
+module.exports = {
+    main: () => {
+        console.log("Hello from export.oc!");
+    }
+}
+
+// main.oc
+export.main();
+```
+
 ## Usage
 
 1. Create a file named "main.oc"
-2. `npm run dev`
+2. `npm run dev` for a development version. `npm run release` for a release version
 
 ## Planned features
 
