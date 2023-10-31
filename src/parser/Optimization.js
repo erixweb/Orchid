@@ -29,7 +29,7 @@ module.exports = {
                     safari10: true
                 },
                 module: false,
-                sourceMap: process.argv.includes("--sourceMap"),
+                sourceMap: false,
                 output: {
                     comments: false
                 }

@@ -1,11 +1,10 @@
 {
   "name": "orchid",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "node index.js --noOptimization && node main.js",
-    "release": "node index.js --sourceMap && node main.js",
+    "release": "node index.js && node main.js",
     "bundle": "node index.js --bundle && node main.js"
   },
   "dependencies": {
