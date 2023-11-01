@@ -10,7 +10,7 @@ async function main() {
     let contents = (
         fs.readFileSync("./src/library/Orchid.oc").toString() +
         fs.readFileSync("./src/library/Math.oc").toString() +
-        fs.readFileSync("./src/library/Colors.oc").toString() + 
+        fs.readFileSync("./src/library/Colors.oc").toString() +
         "\n"
     )
 
@@ -31,10 +31,10 @@ async function main() {
 
             const fileContents = fs.readFileSync(filePath, "utf8");
 
-            contents += fileContents.toString();
+            contents += Parser.parse(fileContents.toString());
 
-            contents = Parser.parse(contents);
-            
+            contents = "async function __main() {" + Parser.parse(contents) + "}; __main();";
+
             if (!process.argv.includes("--noOptimization")) {
                 contents = await Optimization.optimize(contents);
             }
