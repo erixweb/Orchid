@@ -17,7 +17,6 @@ JavaScript, but with extra features
 * Built-in `enforceType(value, type)` function
 * Built-in `getRunningEnvironment()` & `getRunningEnv()` functions (and the `RunningEnvironments` enum ofc)
 * Built-in `isDefined(object)` function
-* Built-in `MAX_INT32_VALUE` global variable
 * Built-in `Array.prototype.contains()` and `String.prototype.contains()` which are aliases to `Array.prototype.includes()` and `String.prototype.includes()`
 
 ## Examples
