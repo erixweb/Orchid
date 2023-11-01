@@ -8,24 +8,12 @@ module.exports = {
      * @returns {string}
      */
     parse(code) {
-        let lines = (
-            `"use strict";`
-        );
-
-        if (process.argv.includes("--bundle")) {
-            lines = lines + code;
-        } else {
-            lines = lines +
+        let lines = process.argv.includes("--bundle") ? code :
                 "(async () => {" +
-                    // Compiler-inserted values
                     `const __COMPILER__OPTIMIZATION_ENABLED = ${!process.argv.includes("--noOptimization")};` +
-                    
-                    fs.readFileSync("./src/library/Orchid.oc").toString() +
-                    fs.readFileSync("./src/library/Math.oc").toString() +
-                    
+
                     code +
                 "})();"
-        }
 
         let linesArray = lines.split("\n");
         let inEnumBlock = false;
