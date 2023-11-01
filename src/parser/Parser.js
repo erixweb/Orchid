@@ -8,10 +8,7 @@ module.exports = {
      * @returns {string}
      */
     parse(code) {
-        let lines = process.argv.includes("--bundle") ? code :
-                    `const __COMPILER__OPTIMIZATION_ENABLED = ${!process.argv.includes("--noOptimization")};\n` +
-
-                    code 
+        let lines = code;
 
         let linesArray = lines.split("\n");
         let inEnumBlock = false;
