@@ -7,10 +7,6 @@ const Optimization = require("./src/parser/Optimization");
 const Parser = require("./src/parser/Parser");
 
 async function main() {
-    if (process.argv.includes("--bundle")) {
-        fs.writeFileSync("main.js", "")
-    }
-
     let contents = Parser.parse(
         fs.readFileSync("./src/library/Orchid.oc").toString() +
         fs.readFileSync("./src/library/Math.oc").toString()
