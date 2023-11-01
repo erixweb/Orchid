@@ -1,3 +1,8 @@
+/**
+ * A list of formattings that can be used in the console.
+ *
+ * @enum {string}
+ */
 enum Formattings {
     Reset = "\x1b[0m",
     Bright = "\x1b[1m",
@@ -8,6 +13,11 @@ enum Formattings {
     Hidden = "\x1b[8m"
 }
 
+/**
+ * A list of background colors that can be used in the console.
+ *
+ * @enum {string}
+ */
 enum BackgroundColors {
     Black = "\x1b[40m",
     Red = "\x1b[41m",
@@ -20,6 +30,11 @@ enum BackgroundColors {
     Gray = "\x1b[100m"
 }
 
+/**
+ * A list of foreground colors that can be used in the console.
+ *
+ * @enum {string}
+ */
 enum ForegroundColors {
     Black = "\x1b[30m",
     Red = "\x1b[31m",
@@ -32,14 +47,19 @@ enum ForegroundColors {
     Gray = "\x1b[90m"
 }
 
-// Define String prototype methods for each color
 Object.keys(ForegroundColors).forEach(color => {
     String.prototype[color.toLowerCase()] = function () {
         return this.colorize(ForegroundColors[color]);
     };
 });
 
-// Define the colorize method
+/**
+ * Colorizes the specific string into the specified color.
+ *
+ * @enum {string} color
+ */
 String.prototype.colorize = function (color) {
+    enforceType(color, DataTypes.String)
+
     return color + this + "\x1b[0m";
 };
