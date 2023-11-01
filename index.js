@@ -7,9 +7,10 @@ const Optimization = require("./src/parser/Optimization");
 const Parser = require("./src/parser/Parser");
 
 async function main() {
-    let contents = Parser.parse(
+    let contents = (
         fs.readFileSync("./src/library/Orchid.oc").toString() +
-        fs.readFileSync("./src/library/Math.oc").toString()
+        fs.readFileSync("./src/library/Math.oc").toString() +
+        fs.readFileSync("./src/library/Colors.oc").toString()
     )
 
     try {
@@ -29,8 +30,10 @@ async function main() {
 
             const fileContents = fs.readFileSync(filePath, "utf8");
 
-            contents += Parser.parse(fileContents);
+            contents += fileContents.toString();
 
+            contents = Parser.parse(contents);
+            
             if (!process.argv.includes("--noOptimization")) {
                 contents = await Optimization.optimize(contents);
             }
