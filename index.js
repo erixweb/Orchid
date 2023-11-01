@@ -7,6 +7,15 @@ const Optimization = require("./src/parser/Optimization");
 const Parser = require("./src/parser/Parser");
 
 async function main() {
+    if (process.argv.includes("--bundle")) {
+        fs.writeFileSync("main.js", "")
+    }
+
+    let contents = Parser.parse(
+        fs.readFileSync("./src/library/Orchid.oc").toString() +
+        fs.readFileSync("./src/library/Math.oc").toString()
+    )
+
     try {
         const files = fs.readdirSync(".");
 
@@ -20,20 +29,24 @@ async function main() {
                 continue; // Skip non-orchid files or directories
             }
 
-            const fileContents = fs.readFileSync(filePath, "utf8");
-
             Logger.info("Compiling " + directoryFile);
 
-            let contents = Parser.parse(fileContents);
+            const fileContents = fs.readFileSync(filePath, "utf8");
+
+            contents += Parser.parse(fileContents);
 
             if (!process.argv.includes("--noOptimization")) {
                 contents = await Optimization.optimize(contents);
             }
 
-            fs.writeFileSync(
-                directoryFile.replace(".oc", ".js"), 
-                contents
-            );
+            if (process.argv.includes("--bundle")) {
+                contents = contents.replaceAll("module.exports={", `const ${directoryFile.replace(".oc", "")} = {`);
+            } else {
+                fs.writeFileSync(directoryFile.replace(".oc", ".js"), contents);
+                continue;
+            }
+
+            fs.writeFileSync("main.js", contents);
         }
     } catch (error) {
         Logger.error(error.stack);
