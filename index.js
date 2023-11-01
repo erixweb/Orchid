@@ -10,7 +10,8 @@ async function main() {
     let contents = (
         fs.readFileSync("./src/library/Orchid.oc").toString() +
         fs.readFileSync("./src/library/Math.oc").toString() +
-        fs.readFileSync("./src/library/Colors.oc").toString()
+        fs.readFileSync("./src/library/Colors.oc").toString() + 
+        "\n"
     )
 
     try {
