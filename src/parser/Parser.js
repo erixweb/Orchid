@@ -9,11 +9,9 @@ module.exports = {
      */
     parse(code) {
         let lines = process.argv.includes("--bundle") ? code :
-                "(async () => {" +
-                    `const __COMPILER__OPTIMIZATION_ENABLED = ${!process.argv.includes("--noOptimization")};` +
+                    `const __COMPILER__OPTIMIZATION_ENABLED = ${!process.argv.includes("--noOptimization")};\n` +
 
-                    code +
-                "})();"
+                    code 
 
         let linesArray = lines.split("\n");
         let inEnumBlock = false;

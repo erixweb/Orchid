@@ -8,16 +8,9 @@ JavaScript, but with extra features
 * Compile-time code optimization
 * Now you can use `await` without defining a function
 * Support for bundling multiple files into one
-* Built-in `Time` enum
-* Built-in `DataTypes` enum
-* Built-in `sleep(milliseconds)` function
-* Built-in `Array.prototype.random()` function
-* Built-in `Math.nRandom(min, max)` function
-* Built-in `Math.square()` function
-* Built-in `enforceType(value, type)` function
-* Built-in `getRunningEnvironment()` & `getRunningEnv()` functions (and the `RunningEnvironments` enum ofc)
-* Built-in `isDefined(object)` function
-* Built-in `Array.prototype.contains()` and `String.prototype.contains()` which are aliases to `Array.prototype.includes()` and `String.prototype.includes()`
+* Built-in library for console colors
+* Extended Math library
+* A large amount of built-in functions
 
 ## Examples
 
@@ -95,5 +88,4 @@ hello.main();
 ## Planned features
 
 1. Macros
-2. Built-in logging library with support for log levels and saving the logs to a file
-3. Built-in library for console colors
+2. Built-in logging library with support for log levels and saving the logs into a file

@@ -25,8 +25,8 @@ module.exports = {
                     eval: true,
                     keep_classnames: false,
                     keep_fnames: false,
-                    toplevel: true,
-                    safari10: true
+                    toplevel: false,
+                    safari10: false
                 },
                 module: false,
                 sourceMap: false,
