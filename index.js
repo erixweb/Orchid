@@ -33,7 +33,7 @@ async function main() {
 
             contents += Parser.parse(fileContents.toString());
 
-            contents = "async function __main() {" + Parser.parse(contents) + "}; __main();";
+            contents = "(async function () {" + Parser.parse(contents) + "})();";
 
             if (!process.argv.includes("--noOptimization")) {
                 contents = await Optimization.optimize(contents);
